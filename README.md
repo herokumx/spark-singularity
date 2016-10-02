@@ -1,4 +1,4 @@
-Spark Singularity...**in a Private Space
+Spark Singularity...in a Private Space
 =======================================
 
 This is a fork of https://github.com/heroku/spark-singularity but modified to use a Private-L Dyno Type
