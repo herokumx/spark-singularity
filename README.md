@@ -1,11 +1,13 @@
-Spark Singularity
-=================
+Spark Singularity...*in a Private Space
+=======================================
 
-Use [Spark](https://spark.apache.org) on Heroku in a single dyno. Experiment inexpensively with Spark in the [Common Runtime](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime).
+This is a fork of https://github.com/heroku/spark-singularity but modified to use a Private-L Dyno Type
+
+Use [Spark](https://spark.apache.org) on Heroku in a single dyno...but within Heroku [Private Spaces](https://devcenter.heroku.com/articles/dyno-runtime#private-spaces-runtime). 
 
 Production-quality Spark clusters may be deployed into [Private Spaces](https://devcenter.heroku.com/articles/dyno-runtime#private-spaces-runtime) using [spark-in-space](https://github.com/heroku/spark-in-space).
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/heroku/spark-singularity)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/herokumx/spark-singularity)
 
 This buildpack provides the following three processes, children of the main web process:
   1. Nginx proxy for
@@ -54,9 +56,9 @@ Sample import & query
 
 ```bash
 heroku scale web=0
-heroku run bin/spark-local-job spark.in.space.Import -s Performance-L
-heroku scale web=1:Performance-L
+heroku run bin/spark-local-job spark.in.space.Import -s Private-L
+heroku scale web=1:Private-L
 heroku logs -t
 # Once complete, avoid ongoing PL dyno charges,
-heroku scale web=0:Standard-1x
+heroku scale web=0:Private-L
 ```
